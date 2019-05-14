@@ -38,11 +38,13 @@ class NotesController < ApplicationController
   def destroy
     Note.find(params[:id]).destroy
     redirect_to notes_path
+    
   end
 
 
 private
   def note_params
     params.require(:note).permit(:title, :author, :body)
+    bindind.pry
   end
 end
