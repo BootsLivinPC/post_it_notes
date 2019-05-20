@@ -1,12 +1,16 @@
-<h1> Post It Notes </h1>
+<h1 class="center"> Post It Notes </h1>
 <hr />
-
-<%= link_to "Create New Note", new_note_path %>
-
+<h4 class="center">Welcome <%= current_user.first_name %></h4>
+<hr />
+<%= link_to "Create New Note", new_note_path, class: "btn" %>
+<br/>
+<div class="card">
 <% @notes.each do |note| %>
-  <h2><%= note.title %></h2>
-  <%= link_to "Show Note", note_path(note.id) %>
-  <%= link_to "Edit Note", edit_note_path(note.id) %>
-  <%= link_to "Delete Note", note_path(note.id), method: :delete %>
-
+  <h5><%= note.title %></h5>
+  <%= link_to "Show Note", note_path(note.id) %> |
+  <%= link_to "Edit Note", edit_note_path(note.id) %> |
+  <%= link_to "Delete Note", note_path(note), method: :delete %>
 <% end %>
+</div>
+<hr />
+  <%= button_to "Log Out", destroy_user_session_path, method: :delete, class:"floated right btn" %>
